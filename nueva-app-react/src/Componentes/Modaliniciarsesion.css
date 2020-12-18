@@ -1,0 +1,148 @@
+
+
+@font-face{
+    font-family: 'BebasKai';
+    src: url('BebasKai.ttf');
+}
+
+.base-conteiner{
+    margin-left: 500px;
+/*     background-color: antiquewhite; */
+    width: 100%;
+    display: flex;
+      flex-direction: column;  
+   align-items: center;
+   justify-items: center;
+   margin-bottom: 20px;
+}
+
+.header{
+    /* background-color: antiquewhite; */
+    font-size: 24px;
+    font-family: 'BebasKai';
+}
+
+
+.content{
+     background-color: rgba(74, 74, 74, 0.25);
+    backdrop-filter: blur(7px); 
+/*     background-color: #ffffff; */
+/*     border-radius: 50px; */
+    margin-right: 20px;
+    border-radius: 40px;
+    display: flex;
+    /* flex-direction: column; */
+    
+}
+
+    .image{
+        /* background-color: antiquewhite; */
+        width: 21em;
+    }
+
+.img{
+  /*   background-color: antiquewhite; */
+    width: 100%;
+    margin-left: 100px;
+}
+
+
+.form{
+  /*   background-color: antiquewhite; */
+    margin-left: 5em ;
+    margin-top: 5em;
+    display: flex;
+   /*  flex-direction: column; */
+    align-items: center;
+    
+}
+
+.formGroups{
+/*      background-color: antiquewhite;  */
+   
+    display: flex;
+    margin-top: 50px;
+   
+    margin-left: 50px;
+     /* flex-direction: column;  */
+     align-items: flex-start;
+     width: fit-content;
+     
+}
+
+
+.label{
+    
+  /*   background-color: antiquewhite; */
+ color: #ffffff;
+ font-size: 20px;
+ font-family: 'BebasKai';
+ margin-right: 20px;
+
+}
+
+.labelInput{
+    font-size: 10px;
+    font-family: 'BebasKai';
+   margin-right: 20px;
+    color: gray;
+    border-radius: 20px;
+   
+
+    transition: all 250ms ease-in-out;
+    
+   }
+
+
+   .labelInput:hover{
+       outline: none;
+       box-shadow: 0px 0px 12px 0.8px  #5b2650  ;
+   }
+
+
+   .footer{
+       width: 200px;
+       margin-top: 50px;
+/*        background-color: aqua; */
+       display: flex;
+         flex-direction: row;
+        align-items: center; 
+        
+        justify-items: flex-start;
+       
+         margin-right: 10px;
+   }
+
+
+   .bbt{
+       background-color: aqua; 
+    display: inline-block;
+    padding: 0.46em 1.6em;
+    border: 0.1em solid #ffffff;
+  
+    margin-top: 210px;
+    margin-right: 20px;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'BebasKai';
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    background-color: rgba(47, 54, 64, 0.57);
+    text-align: center;
+    transition: all 0.15s;
+      
+   }
+
+   .createComponent {
+       width: 50px;
+       height: 500px;
+       background-color: brown;
+   }
+
+
+   .aa{
+       color:#518f80;
+       font-family: 'BebasKai';
+   }

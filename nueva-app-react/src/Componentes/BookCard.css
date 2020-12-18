@@ -1,0 +1,32 @@
+@font-face{
+    font-family: 'BebasKai';
+    src: url('BebasKai.ttf');
+}
+
+.tituloCard{
+    font-family: 'BebasKai';
+    padding-left: 20px;
+    color: #ffffff;
+}
+
+.textoCard{
+    font-family: 'BebasKai';
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.imageCard{
+    width: 350px;
+    height: 400px;
+    margin: 15px;
+}
+.container{
+    width: 900px;
+    padding: 100px;
+    display: flex; 
+    margin-left: 300px;
+    background-color:#5b2650;
+    /* opacity: 0.8; */
+    background-color:rgba(0, 0.5, 0.5, 0.5)
+    
+}

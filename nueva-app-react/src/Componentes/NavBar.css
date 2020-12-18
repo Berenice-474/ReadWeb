@@ -1,0 +1,200 @@
+@font-face{
+    font-family: 'BebasKai';
+    src: url('BebasKai.ttf');
+}
+
+.conteiner1{
+    height: 100px;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    width: 650px;
+    
+ /*    background-color:#5b2650 */
+}
+
+.button {
+ /*    margin-right: 700px; */
+ margin-left: 100px;
+    margin-top: 100px;
+    position: relative;
+    width: 70px;
+    height: 70px;
+}
+.btn {
+    margin-left: 200px;
+   /*  position: absolute; */
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    z-index: 10;
+    font-family: 'BebasKai';
+    color: #ffffff;
+}
+.blurred {
+    position: relative;
+    top: 0; left: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin-left: 200px;
+}
+
+.blurred::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    top: 80%;
+    left: 80%;
+    background-color: #87357b;
+    border-radius: 100%;
+    transition: .2s;
+}
+.blurred::after {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 0;
+    left: 0;
+    background-color:#87357b;
+    border-radius: 100%;
+    transition: .2s;
+}
+.blurred > span:nth-of-type(1) {
+   position: absolute;
+   width: 70px;
+   height: 70px;
+   top: 0;
+   left: 0;
+   background-color: #87357b;
+   border-radius: 100%;
+   transition: .2s;
+}
+.blurred > span:nth-of-type(2) {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  background-color: #87357b;
+  border-radius: 100%;
+  transition: .2s;
+}
+
+.button:hover .blurred::before {
+    width: 40px;
+    height: 40px;
+    top: 50%; left: 50%;
+}
+.button:hover .blurred::after {
+    width: 15px;
+    height: 15px;
+    top: 30px;
+    left: 45px;
+}
+.button:hover .blurred>span:nth-of-type(1) {
+    width: 30px;
+    height: 30px;
+    top: -10px;
+    left: -20px;
+}
+.button:hover > .blurred>span:nth-of-type(2) {
+    width: 25px;
+    height: 25px;
+    top: 40px;
+    left: -20px;
+}
+.blurred {
+    filter: url(#goo);
+}
+.button {
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+i {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    z-index: 10;
+    color: #87357b;
+}
+.blurred {
+    position: relative;
+    top: 0; left: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    filter: url(#goo);
+}
+.blurred::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: #87357b;
+    border-radius: 100%;
+    transition: 1.5s cubic-bezier(0,2,.61,-0.05);
+}
+.blurred::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    left: 0;
+    background-color:#87357b;
+    border-radius: 100%;
+    transition: 1.7s cubic-bezier(0,2,.61,-0.05);
+}
+.blurred > span:nth-of-type(1) {
+     position: absolute;
+     width: 60px;
+     height: 60px;
+     top: 0;
+     left: 0;
+     background-color: #87357b;
+     border-radius: 100%;
+     transition: 1.5s cubic-bezier(0,2,.61,-0.05);
+}
+.blurred > span:nth-of-type(2) {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 0;
+      left: 0;
+      background-color: #87357b;
+      border-radius: 100%;
+      transition: 1.6s cubic-bezier(0,2,.61,-0.05);
+}
+.button:hover .blurred::before {
+      width: 50px;
+      height: 50px;
+      top: 50%; left: 50%;
+}
+.button:hover .blurred::after {
+      width: 20px;
+      height: 20px;
+      top: 30px;
+      left: 45px;
+}
+.button:hover .blurred>span:nth-of-type(1) {
+       width: 40px;
+       height: 40px;
+       top: -15px;
+       left: -15px;
+}
+.button:hover > .blurred>span:nth-of-type(2) {
+       width: 25px;
+       height: 25px;
+       top: 40px;
+       left: -20px;
+}

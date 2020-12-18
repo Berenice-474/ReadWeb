@@ -1,0 +1,11 @@
+ .plup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     padding-left: 100px; 
+    margin-left: 100px;
+    justify-items: center;
+   /*  height: 200px;
+    background-color: #446647; */
+    
+} 

@@ -1,0 +1,110 @@
+@font-face{
+    font-family: 'FIGHTT3_';
+    src: url('FIGHTT3_.ttf');
+}
+
+
+.cajaContenedora{
+
+    
+    /* background-color:#5b2650;  */    
+    
+    height: 3700px; 
+    display: flex;      
+    flex-direction: column;
+    
+
+    
+}
+
+.cajaContenedora2{
+/*     background-color: #5b2650; */
+ background-color:  #5b2650; 
+    height: 900px;
+    display: flex;
+     flex-direction: row-reverse; 
+     align-items: center; 
+     
+}
+
+
+
+.cajaImagen{    
+    margin-top: 200px;
+    width: 410px;
+    height: 650px;
+   /*  background-color: #5b2650;    */
+
+    margin-left: 200px;
+    background-image: url("./figthclub.jpg"); 
+}
+
+
+.cajaTexto{
+ /*    background-color: #5b2650; */
+    width: 500px;
+    height: 200px;
+    align-self: center;
+     margin-bottom: 300px; 
+
+}
+
+.Titulo{
+font-family: 'FIGHTT3_';
+font-size: 120px;
+/* color: #6c9b79; */
+color: #ffffff;
+
+}
+
+/* 
+.contenedoraMarla{
+    background-color: blue;
+    margin-left: 500px;
+    height: 700px;
+    background-image: url("./marla.png"); 
+    
+} */
+
+/* .component-conteiner{
+
+}
+ */
+.cajaBusqueda{
+/* width: 200px; */
+
+/* width: 200px;
+height: 200px; */
+background-color: darkorange;
+align-self: flex-start;
+align-self: center;
+}
+
+
+ .cajaSearchbar{
+ flex-basis: auto;
+ width: 500px;
+ background-color : #5b2650 ;
+ /* align-self: flex-end; */
+}
+
+
+.cajaContenedora1{
+     background-color: #5b2650; 
+
+    display: flex;
+    justify-content: flex-start;
+   
+}
+
+.Blabla{
+    background-color: white;
+    align-self: center;
+}
+
+
+.imagensita{
+    width: 200px;
+    height: 200px;
+    opacity: 0.5;
+}

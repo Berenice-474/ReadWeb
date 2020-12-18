@@ -1,0 +1,16 @@
+.List{
+        display: flex;  
+ /*    background-color: darkred; */
+    /* margin-right: 500px; */   
+
+    /* width: 1000px; */
+    padding: 10px;
+    align-self: center;
+    
+    /* padding-top: 50px; */
+    flex-direction: column;
+  
+  
+
+    
+}

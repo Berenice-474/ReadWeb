@@ -1,0 +1,12 @@
+input[type="radio"]{
+    display: none;
+  }
+  
+  
+  .Star{
+    cursor: pointer;
+    transition: color 200ms;
+    border: 1px solid white;
+    border-color: white;
+  }
+  

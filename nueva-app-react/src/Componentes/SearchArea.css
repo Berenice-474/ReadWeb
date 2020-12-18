@@ -1,0 +1,27 @@
+@font-face{
+    font-family: 'BebasKai';
+    src: url('BebasKai.ttf');
+}
+
+
+
+.texto22{
+    font-family: "BebasKai";
+    padding: 10px;
+    color: #446647;
+}
+
+
+
+.cajaSearchArea{
+/*      background-color: #446647;   */
+ 
+    height: 50px;
+    width: 700px;
+    /* opacity: 0.5; */
+    margin-right: 200px;
+    padding-left: 235px;
+    display: flex;
+    flex-direction: row;
+
+}
