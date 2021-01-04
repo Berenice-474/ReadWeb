@@ -1,108 +1,138 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './Modaliniciarsesion.css';
- import Bookloverpana from './Bookloverpana.png';  
- import RegisterModal from './ModalRegister';
- import { Modal } from 'reactstrap';
+import Bookloverpana from './Bookloverpana.png';
+import RegisterModal from './ModalRegister';
+import { Modal } from 'reactstrap';
+import Axios from 'axios';
 
 
-
-export default function LoginModal({open, onClose}){
-
+export default function LoginModal({ open, onClose, props}) {
 
     
+
 
     const [modalEdit, modalInsertEdit] = useState(false);
     const modalEditView = () => modalInsertEdit(!modalEdit);
     const modalEditViewFalse = () => modalInsertEdit(false);
+    
+    const [data, setData] = useState({
+        username: "",
+        password:""
+    })
 
+
+    const {username, password} = data;
+
+    const handleInputData = (event) => {
+        const {name, value} = event.target
+        setData(data => ({ ...data, [name]: value }));
+      }
 
 
     const [isOpened, setIsOpened] = useState(false)
-   
 
 
-    if(!open) return null
 
-    
+    const Login = () => {
+        Axios.post('http://localhost:3000/user/login', {
+            username : data.username,
+            password : data.password         
+        }).then((response) => {
+            console.log(response)
+        })
+    }
 
 
-    return(
-        <div className = 'base-conteiner' >
+
+
+
+    if (!open) return null
+
+
+
+
+    return (
+        <div className='base-conteiner' >
             <div className='header'></div>
             <div className="content">
                 <div className="image">
-                    <img   src= {Bookloverpana}/>
+                    <img src={Bookloverpana} />
                     <div><a className="createComponent ">
-              <div className="accountComponent">
-              <a   className="aa" 
-                href="#" 
-                onClick={() => modalEditView()}
-                /* onClick = {() => setIsOpened(true)} */
-               > No tienes todavia una cuenta? Registrate! </a>
-             <div>
-             <a className="aa"/* href="/forgot" */> ¿olvidaste tu contraseña? </a>
-             </div>
-               <Modal isOpen = {modalEdit} >
-              <RegisterModal 
-               modalEditViewFalse={modalEditViewFalse} />
-              </Modal>
-            </div>
-          </a>
-          </div> 
-                    
+                        <div className="accountComponent">
+                            <a className="aa"
+                                href="#"
+                                onClick={() => modalEditView()}
+                            /* onClick = {() => setIsOpened(true)} */
+                            > No tienes todavia una cuenta? Registrate! </a>
+                            <div>
+                                <a className="aa"/* href="/forgot" */> ¿olvidaste tu contraseña? </a>
+                            </div>
+                            <Modal isOpen={modalEdit} >
+                                <RegisterModal
+                                    modalEditViewFalse={modalEditViewFalse} />
+                            </Modal>
+                        </div>
+                    </a>
+                    </div>
+
                 </div>
                 <div className="forms">
                     <div className="formGroups">
-                        <label htmlFor= 'username' className='label' >Username</label>
-                        <input  className='labelinput' 
-                        type='text' 
-                        name= 'username' 
-                        placeholder='username'
-                       
+                        <label htmlFor='username' className='label' >Username</label>
+                        <input className='labelinput'
+                            type='text'
+                            name='username'
+                            placeholder='username'
+                            onChange={ handleInputData }
+
                         />
                     </div>
                     <div className="formGroups">
-                        <label className='label' htmlFor= 'password'>Password</label>
-                        <input  className='labelinput'
-                         type='password' 
-                         name= 'password'
-                         placeholder='password'
-                       
-                         />
-                         
+                        <label className='label' htmlFor='password'>Password</label>
+                        <input className='labelinput'
+                            type='password'
+                            name='password'
+                            placeholder='password'
+                            onChange={ handleInputData} 
+
+                        />
+
                     </div>
-                
-                
+
+
                 </div>
+                <div className="footer">
 
-                 <div className="footer">
-          
-            
-                     <div>
-          
-                    <button type= 'button'  className = 'bbt' >Login </button>
-
-                    </div>
-                    
                     <div>
+
+                        <button
+                         type='button'
+                        className='bbt'
+                        onClick = {Login}
                         
-                <button className='bbt'  onClick={onClose}>Cerrar</button>
-                    
-                   
+                        >Login </button>
+
+                    </div>
+
+                    <div>
+
+                        <button className='bbt' onClick={onClose}>Cerrar</button>
+
+
+                    </div>
+
                 </div>
-                    
-                </div> 
-               
+
                 {/* <button onClick={onClose}>Register</button> */}
-               
-               
+
+
             </div>
 
-            
+
         </div>
 
     )
 
 
-    
+
 }

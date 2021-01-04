@@ -1,0 +1,26 @@
+
+@font-face{
+    font-family: 'BebasKai';
+    src: url('BebasKai.ttf');
+}
+
+.tunkConteiner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+
+.texttunk{
+    font-family: 'BebasKai';
+    color: #ffffff;
+}
+.addStyle {
+    margin-top: 10px;
+    width: 50 px;
+    height: 50 px;
+}
+
+.Eyee{
+    margin-top: 20px;
+}

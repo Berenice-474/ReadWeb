@@ -8,6 +8,11 @@ const SearchArea = (props) => {
 
     return(
         <div className = 'cajaSearchArea'>
+            <div>
+                
+            <p className='texto22'>Recomendar Libro al azar</p>
+            
+            </div>
             <form onSubmit ={props.searchBook} action="">
                 <input  onChange={props.handleSearch} className= "texto22" placeholder="¿Que estas buscando?"  type='text'/>
                 {/* <button type="submit"  > Search </button>   */} 

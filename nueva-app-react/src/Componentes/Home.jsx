@@ -8,6 +8,7 @@ import Busqueda2 from './Busqueda2';
 import Modal from './Modal'
 import Company from './Company.png'
 import Questions from './Questions.png'
+import AboutUs from './AboutUs';
 
 
 const Home = (props) => {
@@ -40,9 +41,12 @@ const Home = (props) => {
                 <div className= 'cajabusqueda'>              
                
                 <img className="imgensita" src={Company} />
+            
                
                  </div>
-
+                 <div>
+                 <AboutUs/>
+                 </div>
          </div>
     )
 }

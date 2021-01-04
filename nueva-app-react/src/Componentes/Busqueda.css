@@ -14,7 +14,7 @@
 }
 
 .button {
-    margin-right: 700px;
+   
     margin-top: 100px;
     position: relative;
     width: 70px;
@@ -23,17 +23,24 @@
 .btn {
     
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%; left: 20%;
     transform: translate(-50%, -50%);
     font-size: 20px;
     z-index: 10;
     font-family: 'BebasKai';
-    color: #5b2650;
+  /*   color: #5b2650; */
+     color: #ffffff;
 }
+.imgbtn{
+    margin-left: 200px;
+    margin-top: 2px;
+}
+
+
 .blurred {
-    
+   
     position: relative;
-    top: 0; left: 0;
+ 
     width: 200px;
     height: 200px;
     border-radius: 100%;

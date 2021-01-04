@@ -10,11 +10,11 @@ const StarRating = (props) => {
     {[...Array(5)].map((star, i) => {
       const ratingValue = i + 1;
       return <label>
-        <input type="radio"
+        <input  type="radio" 
           name="rating"
           value={ratingValue}
           onClick={() => {
-            setRat({
+            setRating({
               target: {
                 name: "rating",
                 value: ratingValue
@@ -23,7 +23,7 @@ const StarRating = (props) => {
             setRating(ratingValue)
           }}
         />
-        <FaStar className="Star" size={25} color={ratingValue < (hover || rating) || ratingValue === (hover || rating) /* ratingValue < reting || ratingValue === reting  */ ? "#FFFFFF" : "dimgrey"}
+        <FaStar className="Star" size={25} color={ratingValue < (hover || rating) || ratingValue === (hover || rating) /* ratingValue < reting || ratingValue === reting  */ ? "#8db59e": "dimgrey"}
           onMouseEnter={() => setHover(ratingValue)}
           onMouseLeave={() => setHover(null)} />
       </label>

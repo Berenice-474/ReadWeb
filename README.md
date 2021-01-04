@@ -1,7 +1,4 @@
 # expressconjuan
 
-Pasos:
-
--npm init -- yes : crea mi package json---
--npm i --save express
--npm i nodemon -D :-----> agregue en scrips de json "dev": "nodemon src/index.js"
+1-PARA EJECUTAR BACKEND ---> NPM RUN DEV
+2-PARA EJECUTAR FRONTEND----> CD nueva-app-react ----> NPM START

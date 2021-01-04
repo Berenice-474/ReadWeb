@@ -1,5 +1,7 @@
-import React, {useState} from 'react'
-import './Busqueda.css'
+import React, {useState} from 'react';
+import './Busqueda.css';
+import boxbook from './boxbook.png';
+
 
 const Busqueda = () => {
 
@@ -8,12 +10,29 @@ const Busqueda = () => {
         <div className= 'conteiner1'>
 
            <div className="button">
-           <button type="button" className="btn" >About Us</button>           
+            <ul>
+                <li> 
+                    <a href='#nosotros'>
+                    <div className="blurred">
+          {/*  <span></span><span></span> */}
+          </div>      
+          <input
+         className='btn' 
+          type='image'
+          src={boxbook}
+           />
+          {/*  <button
+            type="button" 
+            className="btn"           
             
-           <div className="blurred">
-           <span></span><span></span>
+            >About Us</button>  */}
+        
+                      </a> 
+                 </li>   
+           </ul>
+         
           </div>
-          </div>
+          
           <svg>
  <defs>
   <filter id='goo'>

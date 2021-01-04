@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './NavBar.css'
 import { Modal } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Login from './Login.jsx'
+
 import SearchArea from './SearchArea.jsx'
 import LoginModal from './Modaliniciarsesion.jsx'
 

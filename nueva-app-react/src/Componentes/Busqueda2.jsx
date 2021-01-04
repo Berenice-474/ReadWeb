@@ -16,12 +16,14 @@ const Busqueda2 = () => {
            <div className="blurred">
            <span></span><span></span>
           </div>
+          <div>
            <button type="button" className="btn"  onClick = {() => setIsOpened(true)} >
           
                <FontAwesomeIcon  icon= {faSearch} style = {{fontSize : "2em"}}/></button>           
                <Modal open= {isOpened}  onClose = { () => setIsOpened(false) }>
 
                </Modal>
+               </div>
            
           </div>
           <svg>

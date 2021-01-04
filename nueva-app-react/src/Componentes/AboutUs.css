@@ -1,0 +1,92 @@
+@font-face{
+    font-family: 'BebasKai';
+    src: url('BebasKai.ttf');
+}
+
+
+
+
+
+.ConteinerMayor{
+    display: flex;
+    flex-direction: row;
+  /*   background-color: aqua; */
+    width: 1500px;
+    height: 500px;
+}
+
+.mibaul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+     background-color: #000000; 
+}
+
+.busca{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+   /*  background-color: coral; */
+}
+
+.buscar1{
+    width: 220px;
+}
+.guarda{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+   /*  background-color: crimson; */
+}
+
+
+.uala{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 300px;
+   /*  background-color: darkgreen; */
+}
+
+
+.imgtrunk{
+    width: 300px;
+/*     background-color: darkslategray; */
+}
+
+
+.botonsiño{
+    margin-bottom: 50px;
+    display: inline-block;
+    padding: 0.46em 1.6em;
+    border: 0.1em solid #ffffff;
+   
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'BebasKai';
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    background-color: rgba(47, 54, 64, 0.57);
+    text-align: center;
+    transition: all 0.15s;
+}
+
+
+.texto{
+    font-family: 'BebasKai';
+    font-size: 20px;
+    color: #5b2650;
+
+}
+
+.textodos{
+    font-family: 'BebasKai';
+    font-size: 15px;
+    color: dimgrey;
+}

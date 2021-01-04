@@ -4,6 +4,7 @@ import request from 'superagent'
 import BookList from './BookList'
 import './books.css'
 
+
 class Books extends Component {
 
 
@@ -11,9 +12,9 @@ class Books extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            books : [],
-            searchField: '',
-            sort: ""
+            books : [],        //clean data =======> lo que busco de la api
+            searchField: '',   // busqueda
+            sort: ""   //nuevo, viejo 
 
         }
 
@@ -21,7 +22,7 @@ class Books extends Component {
     }
 
     handleSort = (e) =>{
-        console.log(e.target.value)
+        console.log('acadoss' , e.target.value)
         this.setState({
             sort: e.target.value
         })
@@ -59,8 +60,8 @@ class Books extends Component {
     }
 
     handleSearch = (e) => {
-      /*   console.log(e.target.value) */
-        this.setState({ searchField : e.target.value})
+       /* console.log('acaaaa', e.target.value)  */
+    this.setState({ searchField : e.target.value}) // busqueda
         
     }
 
@@ -87,3 +88,4 @@ class Books extends Component {
 
 
 export default Books;
+
