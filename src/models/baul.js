@@ -1,8 +1,5 @@
 const { DataTypes} = require('sequelize');
 
-
-
-
 module.exports = (sequelize, Sequelize) => {
 const Baul = sequelize.define('baul', {
   idBaul: {
@@ -36,7 +33,7 @@ const Baul = sequelize.define('baul', {
   ).then(() =>  {
   console.log('tabla Baul creada');
   return true
-})  */  
+})   */
 
 
 return Baul;

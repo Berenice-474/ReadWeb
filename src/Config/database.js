@@ -1,10 +1,9 @@
-  require('dotenv').config();
- const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
- const { DataTypes } = require('sequelize');
+require('dotenv').config();
+const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DataTypes } = require('sequelize');
 
 
 const { Sequelize } = require('sequelize');
- 
 
 // conecto con mi base de datos 
 const sequelize = new Sequelize(
@@ -14,21 +13,6 @@ const sequelize = new Sequelize(
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
-
- 
-/* const models = {
-  User: require('../models/user'),
-  Baul: require('../models/baul'),
-}; */
-
-
-/* Object.keys(models).forEach(key => {
-  if ('associate' in models[key]) {
-    models[key].associate(models);
-  }
-}); 
- */
-
 
 //////////// MODELOS
  const User = sequelize.define('user', {
@@ -58,8 +42,6 @@ const sequelize = new Sequelize(
     }
 })
 
-
-
 const Baul = sequelize.define('baul', {
   idBaul: {
     type: DataTypes.INTEGER,
@@ -76,7 +58,23 @@ const Baul = sequelize.define('baul', {
     type: DataTypes.STRING,      
     defaultValue: 'CREADA'
   }
-}) 
+});
+
+
+const Book = sequelize.define('book', {
+  idUser: {
+    type: DataTypes.INTEGER,
+    unique: true,
+    allowNull: false
+  },
+idBook:  {
+    type: DataTypes.INTEGER,
+    unique: true,
+    allowNull: false
+  }
+
+})
+
 
 
 ////////////////////// VERIFICO CREACIÓN DE TABLAS Y REINICIO MI  DB
@@ -102,8 +100,14 @@ const Baul = sequelize.define('baul', {
  )
 
 
+  User.belongsTo(Book, 
+  { through: "User_Baul" }
+ )
+ 
 
 
+
+ 
  /// VERIFICO BASE DE DATOS 
  try {  
   sequelize.authenticate();

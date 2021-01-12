@@ -3,7 +3,6 @@ const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
 
-
   const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/final`,
     {
@@ -20,6 +19,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
   db.sequelize = sequelize   
   db.user = require('./user.js') (sequelize,Sequelize)
   db.baul = require('./baul.js') (sequelize,Sequelize)  
+  db.book = require('./Book.js') (sequelize,Sequelize)  
 
 
 

@@ -10,18 +10,14 @@ const Busqueda2 = () => {
 
     return(
         <div className= 'conteiner11'>
-
-
            <div className="button">
            <div className="blurred">
            <span></span><span></span>
           </div>
           <div>
-           <button type="button" className="btn"  onClick = {() => setIsOpened(true)} >
-          
+           <button type="button" className="btn"  onClick = {() => setIsOpened(true)} >          
                <FontAwesomeIcon  icon= {faSearch} style = {{fontSize : "2em"}}/></button>           
                <Modal open= {isOpened}  onClose = { () => setIsOpened(false) }>
-
                </Modal>
                </div>
            
@@ -40,11 +36,7 @@ const Busqueda2 = () => {
    </filter>
  </defs>
 </svg>
-{/*            <div className = 'conteiner2'>
-           <button type="button" className="btn btn-dark" >Nosotros</button> 
-           </div> */}
-
-        </div>
+</div>
     )
 
 

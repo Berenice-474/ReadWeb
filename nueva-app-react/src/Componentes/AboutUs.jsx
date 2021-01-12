@@ -1,33 +1,65 @@
-import React from 'react';
+import React , {useState} from 'react';
 import './AboutUs.css';
 import boxbook from './boxbook.png';
 import buscarimg from './buscarimg.png'
 import addfile from './addfile.png'
 import Conversation from './Conversation.png'
 import Books from './books.jsx'
-
+import { Modal } from 'reactstrap';
+import ModalBook from './ModalBooks';
+import Axios from 'axios';
 
 const AboutUs = (props) => {
 
 
-    return(
+    
 
-        <section id='nosotros' className='Nosotros'>
-          
+    const [modalEdit, modalInsertEdit] = useState(false);
+    const modalEditView = () => modalInsertEdit(!modalEdit);
+    const modalEditViewFalse = () => modalInsertEdit(false);
+
+    const [databook, setdatabook] = useState(['']);
+
+
+    const userBook = () => {        
+        Axios.get('http://localhost:3000/user/books', {
+            headers: {
+                'auth-token' : window.localStorage.getItem('token')},
+        })
+             .then((response) => {
+                 console.log('acaa', response)  
+                 setdatabook(response.data)})
+             .catch((e) => { console.log(e)})}
+                
+               
+
+                
+    return(
+        <section id='nosotros' className='Nosotros'>          
            <div className= 'ConteinerMayor'>
-           
-               <div className='mibaul'>
+                   <div className='mibaul'>
                    <div>
-                   <button className='botonsiño'>Mi baúl</button>
+                   <button 
+                   className='botonsiño'
+                   onClick={(event) => {                   
+                    modalEditView()
+                    userBook()
+                    event.preventDefault() }}     
+                   >Mi baúl</button>
+                   
+                     <Modal isOpen={modalEdit} >                                
+                                <ModalBook                                
+                                 modalEditViewFalse={modalEditViewFalse}
+                                 databook = {databook} />
+                            </Modal>
                    </div>
                    <div>
-               <input
-              
+               <input              
                type='image'
                 src={boxbook}
-              />
+               />              
                 </div>
-               </div>
+               </div>               
                <div className='busca'>
                    <div >
                    <input

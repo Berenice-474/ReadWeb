@@ -14,12 +14,7 @@ const cors = require('cors');
 
 
 
-
 require('./Config/database.js');
-
-
-
-
 
 
 //middlewares
@@ -33,34 +28,9 @@ app.use(express.json());
 
 
 
-
-
-
  // settings
 app.set('port', process.env.PORT || 3000); //en caso de que nos den algún puerto 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 
 ///Routes
 
@@ -69,12 +39,10 @@ app.use('/register' , require('./Routes/register'))
 
 
 
-
 // Starting the server
 app.listen(app.get('port'), () => {
     console.log(`Server on port  ${app.get('port')}`)
 })
-
 
 
 

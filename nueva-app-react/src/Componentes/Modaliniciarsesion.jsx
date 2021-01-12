@@ -7,10 +7,7 @@ import Axios from 'axios';
 
 
 export default function LoginModal({ open, onClose, props}) {
-
-    
-
-
+ 
     const [modalEdit, modalInsertEdit] = useState(false);
     const modalEditView = () => modalInsertEdit(!modalEdit);
     const modalEditViewFalse = () => modalInsertEdit(false);
@@ -20,116 +17,81 @@ export default function LoginModal({ open, onClose, props}) {
         password:""
     })
 
-
     const {username, password} = data;
-
     const handleInputData = (event) => {
         const {name, value} = event.target
-        setData(data => ({ ...data, [name]: value }));
-      }
-
+        setData(data => ({ ...data, [name]: value })); }
 
     const [isOpened, setIsOpened] = useState(false)
-
-
-
     const Login = () => {
         Axios.post('http://localhost:3000/user/login', {
             username : data.username,
             password : data.password         
         }).then((response) => {
             console.log(response)
+            window.localStorage.setItem('token', response.data.token);
+            window.localStorage.setItem('username', response.data.username)            
         })
     }
-
-
-
-
-
     if (!open) return null
-
-
-
-
     return (
         <div className='base-conteiner' >
             <div className='header'></div>
-            <div className="content">
+                <div className="content">
                 <div className="image">
-                    <img src={Bookloverpana} />
-                    <div><a className="createComponent ">
-                        <div className="accountComponent">
-                            <a className="aa"
-                                href="#"
-                                onClick={() => modalEditView()}
-                            /* onClick = {() => setIsOpened(true)} */
+                <img src={Bookloverpana} />
+                <div><a className="createComponent ">
+                <div className="accountComponent">
+                 <a className="aa"
+                            href="#"
+                            onClick={() => modalEditView()}                           
                             > No tienes todavia una cuenta? Registrate! </a>
                             <div>
-                                <a className="aa"/* href="/forgot" */> ¿olvidaste tu contraseña? </a>
+                            <a className="aa"/* href="/forgot" */> ¿olvidaste tu contraseña? </a>
                             </div>
                             <Modal isOpen={modalEdit} >
                                 <RegisterModal
-                                    modalEditViewFalse={modalEditViewFalse} />
+                                 modalEditViewFalse={modalEditViewFalse} />
                             </Modal>
-                        </div>
-                    </a>
-                    </div>
+                            </div>
+                            </a>
+                            </div>
 
                 </div>
                 <div className="forms">
-                    <div className="formGroups">
+                        <div className="formGroups">
                         <label htmlFor='username' className='label' >Username</label>
                         <input className='labelinput'
                             type='text'
                             name='username'
                             placeholder='username'
                             onChange={ handleInputData }
-
-                        />
-                    </div>
-                    <div className="formGroups">
+                                                    />
+                </div>
+                <div className="formGroups">
                         <label className='label' htmlFor='password'>Password</label>
                         <input className='labelinput'
                             type='password'
                             name='password'
                             placeholder='password'
                             onChange={ handleInputData} 
-
                         />
-
-                    </div>
-
-
+                </div>
                 </div>
                 <div className="footer">
-
                     <div>
-
                         <button
                          type='button'
-                        className='bbt'
-                        onClick = {Login}
-                        
+                         className='bbt'
+                         onClick = {Login}                        
                         >Login </button>
-
                     </div>
-
                     <div>
-
                         <button className='bbt' onClick={onClose}>Cerrar</button>
-
-
                     </div>
-
-                </div>
-
-                {/* <button onClick={onClose}>Register</button> */}
-
-
+                    </div>  
+                    </div>
             </div>
-
-
-        </div>
 
     )
 

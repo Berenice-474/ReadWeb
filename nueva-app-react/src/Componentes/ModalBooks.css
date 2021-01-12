@@ -1,0 +1,33 @@
+.conteinera{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(74, 74, 74, 0.25);
+    backdrop-filter: blur(7px); 
+    border-radius: 40px;
+    width: 900px;
+}
+
+.textoCarda{
+    justify-content: center;
+    font-family: 'BebasKai';
+    font-size: 20px;
+    color: #000000;}
+
+.botonsi{
+    margin-bottom: 50px;
+    display: inline-block;
+    padding: 0.46em 1.6em;
+    border: 0.1em solid #ffffff;   
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'BebasKai';
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    background-color: rgba(47, 54, 64, 0.57);
+    text-align: center;
+    transition: all 0.15s;
+}

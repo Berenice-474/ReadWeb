@@ -40,8 +40,7 @@ const Home = (props) => {
            {/*   <Books/> */}</div>
                 <div className= 'cajabusqueda'>              
                
-                <img className="imgensita" src={Company} />
-            
+                <img className="imgensita" src={Company} />           
                
                  </div>
                  <div>

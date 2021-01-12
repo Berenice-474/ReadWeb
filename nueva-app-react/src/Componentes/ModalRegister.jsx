@@ -12,12 +12,8 @@ import { verify } from 'jsonwebtoken';
 
 export default function RegisterModal(props){
 
-
        
-    const { modalEditViewFalse} = props;
-  /*   const [usernameReg, setUsernameReg] = useState("")
-    const [passwordReg, setPasswordReg] = useState("")    */
-    
+    const { modalEditViewFalse} = props;    
     const [datos, setDatos] = useState({
         username: "",
         email: "",
@@ -34,36 +30,31 @@ export default function RegisterModal(props){
         setDatos(datos => ({ ...datos, [name]: value }));
       }
 
-
       const register = () => {
           Axios.post('http://localhost:3000/user/', {
               username : datos.username,
               password : datos.password,
               email: datos.email
-          }).then((response) => {
+              }).then((response) => {
               console.log(response)
-          })
-      }
-
+              })
+              }
 
     return(
-        
-       <div /*  className = 'base-conteiner' */ >
+           <div /*  className = 'base-conteiner' */ >
            <ModalHeader className= 'base-conteiiner'>
                <div className= 'header'>
-                   <p className='textRg'>Register</p>
-                   <img className='imgContent'  src= {stayathome}/>
-                   
+               <p className='textRg'>Register</p>
+               <img className='imgContent'  src= {stayathome}/>                   
                </div>
            </ModalHeader>
            <ModalBody>
                <FormGroup>
                <div className='inputContEditUser'>
-            <label className='editDataUserName'>
-              Nombre
+               <label className='editDataUserName'>
+                Nombre
                <input 
-                className='inputDataUser'            
-                
+                className='inputDataUser'                
                 placeholder='nombre'
                 type="text"
                 name='username'
@@ -80,59 +71,37 @@ export default function RegisterModal(props){
                  value={email} 
                  onChange={handleInputChange}
                 />
-            </label>
-
-         
+            </label>         
             <label className='editDataUserName'>
                <input className='inputDataUser'
                 placeholder='Igrese  contraseña'
                 type="password"
-                name='password'
-                /* value = {password} */
-                onChange={handleInputChange}
-                
+                name='password'               
+                onChange={handleInputChange}               
                />
             </label>
-
-
             <label className='editDataUserName'>
               Ingrese su contraseña actual para confirmar
-          <input className='inputDataUser'
+           <input className='inputDataUser'
                 type="password"
                 placeholder='Repita su contraseña'
-                name="nuevaContraseña"
-                /* value = {nuevaContraseña} */
-                onChange={handleInputChange}
-                
+                name="nuevaContraseña"                
+                onChange={handleInputChange}                
               />
-            </label>
-            </div>
-               </FormGroup>
+           </label>
+           </div>
+           </FormGroup>
            </ModalBody>
            <ModalFooter  className='buttonContEditData'>
            <button className="closeButton" onClick={modalEditViewFalse}>Cerrar</button>
            <button className= "closeButton"
            onClick = {  event => { 
                register()
-               event.preventDefault(); 
-              
-              
-               
+               event.preventDefault();                                            
                if(!datos.password) return swal('Mmm te olvidaste de ingresar contraseña!')
                if(datos.password !== datos.nuevaContraseña) return swal("Mmm Las contraseñas no coinciden")
                if(datos && datos.password === datos.nuevaContraseña) swal("Buen trabajo!", "Estas registrado!", "success" );
-           
-               
-
-           }           
-           } 
- /*           oneKeyPress = {(e) => {
-             if (e.key === 'Enter') {
-              verify()
-             } }} */
-        
-           /* onChange = { () => register}  */
-           >Registrarse</button>
+               }}>Registrarse</button>
            </ModalFooter>
        </div>
 

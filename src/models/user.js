@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { DataTypes } = require('sequelize');
 
-
 module.exports = (sequelize,Sequelize) => {
 const User = sequelize.define('user', {
   idUser: {
@@ -24,12 +23,12 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING,
     allowNull: false,
   },
- /*  Baul:{
-    DataTypes:DataTypes.ENUM,
-    values:[],
-    defaultValue: 'Creada'
+/*    books: {
+    type: DataTypes.STRING,    
+    allowNull: true,
+    primaryKey: true,
 
-  }, */
+  },  */
       level: {
       type: DataTypes.ENUM,
       values: ['Guest', 'User', 'Admin'],
@@ -38,13 +37,13 @@ const User = sequelize.define('user', {
 })
 
 //reiciniar mi tabla
-
-/* User.sync({force:true}
+ 
+/*  User.sync({force:true}
   ).then(() =>  {
 console.log('tabla de usuarios creada por favor');
 return true
-})  */
+})    */
 
-return User ;
+return User ; 
 
 }
