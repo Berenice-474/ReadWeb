@@ -3,18 +3,25 @@
     src: url('FIGHTT3_.ttf');
 }
 
+@font-face{
+    font-family: 'BebasKai';
+    src: url('BebasKai.ttf');
+}
 
-.cajaContenedora{
 
-    
-    /* background-color:#5b2650;  */    
-    
+.botonlogout{
+    font-family: 'BebasKai';
+    color: #ffffff;
+    background-color: #56785e;
+
+   }
+   
+
+.cajaContenedora{    
+    /* background-color:#5b2650;  */       
     height: 1000px; 
     display: flex;      
-    flex-direction: column;
-    
-
-    
+    flex-direction: column;       
 }
 
 .cajaContenedora2{
@@ -108,3 +115,4 @@ align-self: center;
     height: 200px;
     opacity: 0.5;
 }
+

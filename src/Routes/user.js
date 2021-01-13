@@ -86,7 +86,7 @@ function verifyToken(req, res, next) {
 
 //////////LOGOUT
 
-router.post('/logout',  (req, res)=> {
+router.post('/logout', (req, res)=> {
     console.log(req.body)
     if(!req.body){
     res.status(404).json({
@@ -116,9 +116,9 @@ router.post('/baul',  verifyToken, (req, res) => {
             title : req.body.titulo,
             image: req.body.image,
             autor: req.body.autor,
-            published: req.body.published
-             
-          }) 
+            published: req.body.published             
+          }) .then(()=>{ res.status(200)})
+             .catch((err)=> {res.status(404)}) 
         } else {
           res.status(404).send({message: 'El libro ya ha sido agregado al baul'})
         }

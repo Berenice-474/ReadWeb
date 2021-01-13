@@ -3,10 +3,14 @@ import './Busqueda2.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import Modal from './Modal';
+import Axios from 'axios';
 
 const Busqueda2 = () => {
 
    const [isOpened, setIsOpened] = useState(false)
+
+
+
 
     return(
         <div className= 'conteiner11'>
@@ -15,10 +19,14 @@ const Busqueda2 = () => {
            <span></span><span></span>
           </div>
           <div>
+          
            <button type="button" className="btn"  onClick = {() => setIsOpened(true)} >          
-               <FontAwesomeIcon  icon= {faSearch} style = {{fontSize : "2em"}}/></button>           
+               <FontAwesomeIcon  icon= {faSearch} style = {{fontSize : "2em"}}/></button>      
+
                <Modal open= {isOpened}  onClose = { () => setIsOpened(false) }>
                </Modal>
+
+               
                </div>
            
           </div>

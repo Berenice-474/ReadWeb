@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { verify } from 'jsonwebtoken';
 
 
+
 export default function RegisterModal(props){
 
        
@@ -36,7 +37,7 @@ export default function RegisterModal(props){
               password : datos.password,
               email: datos.email
               }).then((response) => {
-              console.log(response)
+              console.log(response)              
               })
               }
 
@@ -98,9 +99,10 @@ export default function RegisterModal(props){
            onClick = {  event => { 
                register()
                event.preventDefault();                                            
-               if(!datos.password) return swal('Mmm te olvidaste de ingresar contraseña!')
-               if(datos.password !== datos.nuevaContraseña) return swal("Mmm Las contraseñas no coinciden")
+               if(!datos.password) return swal('Mmm te olvidaste de ingresar contraseña!');
+               if(datos.password !== datos.nuevaContraseña) return swal("Mmm Las contraseñas no coinciden");
                if(datos && datos.password === datos.nuevaContraseña) swal("Buen trabajo!", "Estas registrado!", "success" );
+               
                }}>Registrarse</button>
            </ModalFooter>
        </div>

@@ -4,21 +4,31 @@ import boxbook from './boxbook.png';
 import buscarimg from './buscarimg.png'
 import addfile from './addfile.png'
 import Conversation from './Conversation.png'
-import Books from './books.jsx'
 import { Modal } from 'reactstrap';
 import ModalBook from './ModalBooks';
 import Axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { ToastProvider } from 'react-toast-notifications';
 
-const AboutUs = (props) => {
-
-
-    
+const AboutUs = (props) => {   
 
     const [modalEdit, modalInsertEdit] = useState(false);
     const modalEditView = () => modalInsertEdit(!modalEdit);
     const modalEditViewFalse = () => modalInsertEdit(false);
 
     const [databook, setdatabook] = useState(['']);
+
+
+    const App = () => (
+        <ToastProvider
+          autoDismiss
+          autoDismissTimeout={6000}
+          components={'Tienes que registrarte'}
+          placement="bottom-center"
+        >
+          
+        </ToastProvider>
+      );
 
 
     const userBook = () => {        
@@ -29,8 +39,9 @@ const AboutUs = (props) => {
              .then((response) => {
                  console.log('acaa', response)  
                  setdatabook(response.data)})
-             .catch((e) => { console.log(e)})}
-                
+             .catch((e) => { 
+                 console.log(e)
+                   })}             
                
 
                 
@@ -45,8 +56,7 @@ const AboutUs = (props) => {
                     modalEditView()
                     userBook()
                     event.preventDefault() }}     
-                   >Mi baúl</button>
-                   
+                   >Mi baúl</button>                   
                      <Modal isOpen={modalEdit} >                                
                                 <ModalBook                                
                                  modalEditViewFalse={modalEditViewFalse}

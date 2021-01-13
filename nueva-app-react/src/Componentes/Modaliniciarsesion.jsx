@@ -6,6 +6,7 @@ import { Modal } from 'reactstrap';
 import Axios from 'axios';
 
 
+
 export default function LoginModal({ open, onClose, props}) {
  
     const [modalEdit, modalInsertEdit] = useState(false);
