@@ -1,19 +1,13 @@
 import React, {useState} from 'react';
 import './Modaliniciarsesion.css';
- import Bookloverpana from './Bookloverpana.png';  
 import {ModalHeader, ModalBody, ModalFooter, FormGroup } from 'reactstrap';
 import './ModalRegister.css'
 import stayathome from './stayathome.png'
 import Axios from 'axios';
 import swal from 'sweetalert';
-import { toast } from 'react-toastify';
-import { verify } from 'jsonwebtoken';
-
-
 
 export default function RegisterModal(props){
 
-       
     const { modalEditViewFalse} = props;    
     const [datos, setDatos] = useState({
         username: "",
@@ -37,7 +31,8 @@ export default function RegisterModal(props){
               password : datos.password,
               email: datos.email
               }).then((response) => {
-              console.log(response)              
+              console.log(response)        
+              window.location.href = '/'   
               })
               }
 

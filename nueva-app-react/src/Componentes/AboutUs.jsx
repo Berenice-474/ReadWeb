@@ -7,8 +7,8 @@ import Conversation from './Conversation.png'
 import { Modal } from 'reactstrap';
 import ModalBook from './ModalBooks';
 import Axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
-import { ToastProvider } from 'react-toast-notifications';
+import {  toast} from 'react-toastify';
+
 
 const AboutUs = (props) => {   
 
@@ -18,19 +18,6 @@ const AboutUs = (props) => {
 
     const [databook, setdatabook] = useState(['']);
 
-
-    const App = () => (
-        <ToastProvider
-          autoDismiss
-          autoDismissTimeout={6000}
-          components={'Tienes que registrarte'}
-          placement="bottom-center"
-        >
-          
-        </ToastProvider>
-      );
-
-
     const userBook = () => {        
         Axios.get('http://localhost:3000/user/books', {
             headers: {
@@ -38,9 +25,18 @@ const AboutUs = (props) => {
         })
              .then((response) => {
                  console.log('acaa', response)  
-                 setdatabook(response.data)})
-             .catch((e) => { 
-                 console.log(e)
+                 setdatabook([response.data])})
+             .catch((error) => { 
+              toast.configure();         
+              toast.dark("No se ha encontrado el usuario", {              
+                position: "top-center",
+                autoClose: 1500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+              });  
                    })}             
                
 

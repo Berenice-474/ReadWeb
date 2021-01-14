@@ -18,12 +18,12 @@ router.get('/', async (req,res) => {
   let users = [];
  await models.user.findAll({})
                     .then((resp) => {
-                      {users = resp}
+                      {users = resp}                      
+                      res.status(200).send({users})
                     })
                     .catch((err) => {
                       console.log(err)
-                    })
-                    res.json(users) 
+                    })                   
 
 })
 //////////////////////REGISTER
@@ -41,7 +41,7 @@ router.post('/', async (req,res) =>  {
  })
    res.json(user); 
 });
- 
+
 ///////////LOGIN
 router.post('/login', (req,res)=>{
 const {username, password} = req.body;
@@ -69,13 +69,11 @@ if(User === null) {
 }
 })
 });
-
-
 /////////AUTENTICACIÓN
 function verifyToken(req, res, next) {
     var token  = req.headers['auth-token'];    
     if (!token)
-    return res.status(403).send({ auth: false, message: 'El token no se encuentra.' });    
+    return res.status(401).send({ auth: false, message: 'El token no se encuentra.' });    
     jwt.verify(token, accessTokenSecret, function(err, decoded) {   
     if (err)
     return res.status(500).send({ auth: false, message: 'Falla en la autenticación del token.' });     
@@ -83,62 +81,73 @@ function verifyToken(req, res, next) {
     next();    
   });
 }
-
 //////////LOGOUT
-
 router.post('/logout', (req, res)=> {
     console.log(req.body)
     if(!req.body){
-    res.status(404).json({
+    res.status(401).json({
     message: 'El usuario no se encuentra loggeado'
     }) 
     } else {
     res.send(req.body)
   }
-})
-  
-
-
+}) 
 /////////BAUL
-router.post('/baul',  verifyToken, (req, res) => {      
+ router.post('/baul',  verifyToken, (req, res) => {      
       const id = req.idUser      
       console.log(req.body)
       if(!req.idUser ){
       return res.status(403).send({ auth: false, message: 'No se encuentra el usuario' });
       } else {
       models.book.findOne({ where : {
-        idBook : req.body.id
+        idBook : req.body.id,
+        idUser : id
       }}). then((book) => {
         if(!book) {
           models.book.create({
             idBook : req.body.id,
             idUser : id,
-            title : req.body.titulo,
+            title : req.body.title,
             image: req.body.image,
             autor: req.body.autor,
             published: req.body.published             
-          }) .then(()=>{ res.status(200)})
-             .catch((err)=> {res.status(404)}) 
-        } else {
+          }) .then((book)=>{ res.status(200).send({message: 'Libro agregado correctamente'})})
+             .catch((err)=> {             
+              res.status(500).send({message: 'Ha ocurrido algun error'})}) 
+          }else {
           res.status(404).send({message: 'El libro ya ha sido agregado al baul'})
-        }
-        })
-        }
-})
+          }})}}) 
+
 
 
 //////Mostrar libros
-router.get('/books', verifyToken , (req,res) => {         
-    models.book.findAll({ where : {
+router.get('/books',  verifyToken ,(req,res) => {         
+    models.book.findOne({ where : {
     idUser : req.idUser}})
    .then(userBook => {     
-     console.log(userBook)
+     console.log('userbook',userBook)
     if(!userBook){      
-    res.status(404).send({message: 'No se encontrado nada'})
+    res.status(404).send({message: 'No se ha encontrado nada'})
     } else {
     res.json(userBook);
     }})
     })
+/////////
+
+ router.post('/match',  (req,res) => {
+  var matches = [];
+  console.log('entra a match', req.body)
+  models.book.findAll({ where: {
+     title: req.body.title
+  }}).then((match) => {
+    {matches =  match}
+  console.log('acamatch',{match})
+  res.status(200).send({match})
+  /* .catch((err)=> {res.status(405).send({message:'errrrrrrorrrr'})}) */
+  })
 
 
+
+})
+ 
 module.exports = router;

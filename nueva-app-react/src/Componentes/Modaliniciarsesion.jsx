@@ -4,8 +4,7 @@ import Bookloverpana from './Bookloverpana.png';
 import RegisterModal from './ModalRegister';
 import { Modal } from 'reactstrap';
 import Axios from 'axios';
-
-
+import {  toast} from 'react-toastify';
 
 export default function LoginModal({ open, onClose, props}) {
  
@@ -17,7 +16,6 @@ export default function LoginModal({ open, onClose, props}) {
         username: "",
         password:""
     })
-
     const {username, password} = data;
     const handleInputData = (event) => {
         const {name, value} = event.target
@@ -31,7 +29,19 @@ export default function LoginModal({ open, onClose, props}) {
         }).then((response) => {
             console.log(response)
             window.localStorage.setItem('token', response.data.token);
-            window.localStorage.setItem('username', response.data.username)            
+            window.localStorage.setItem('username', response.data.username)  
+            window.location.href = '/'             
+        }).catch((err) => {
+            toast.configure();         
+            toast.dark("No te encuentras registrado", {              
+              position: "top-center",
+              autoClose: 1500,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+            });
         })
     }
     if (!open) return null

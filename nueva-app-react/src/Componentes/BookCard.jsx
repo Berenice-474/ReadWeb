@@ -14,7 +14,7 @@ const BookCard = (props) => {
             <h3 className = "textoCard">Autor : {props.author} </h3>
             <p className = "textoCard"> Año de publicación : {props.published === "000" ? 'No se encontró' : props.published.substring(0,4)}</p>
             <StarRating/>
-            <Addtotrunk  titulo = {props.title} image= {props.image} autor={props.author} published={props.published} id= {props.id}/>
+            <Addtotrunk  title = {props.title} image= {props.image} autor={props.author} published={props.published} id= {props.id}/>
             </div>        
             </div>
     )

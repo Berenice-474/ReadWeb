@@ -5,7 +5,8 @@ import Busqueda from './Busqueda';
 import Busqueda2 from './Busqueda2';
 import Company from './Company.png'
 import AboutUs from './AboutUs';
-import Axios from 'axios'
+import Axios from 'axios';
+import {  toast} from 'react-toastify';
 
 
 const Home = (props) => {
@@ -19,6 +20,17 @@ const Home = (props) => {
         }).then((response) => {
             console.log(response)
             window.localStorage.clear('token')
+            toast.configure();         
+            toast.dark("Usuario desloggeado", {              
+              position: "top-center",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+            });          
+
         })
     }  
     

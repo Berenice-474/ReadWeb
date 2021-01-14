@@ -24,8 +24,7 @@
 }
 .btn {
     margin-left: 200px;
-   /*  position: absolute; */
- 
+   /*  position: absolute; */ 
     padding-bottom: 20px;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);

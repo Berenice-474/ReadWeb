@@ -2,9 +2,7 @@ import React  from 'react';
 import './ModalBooks.css';
 import Prueba from './prueba.jsx';
 
-const ModalBook = (props) => {
-
-    
+const ModalBook = (props) => {   
     
     const { modalEditViewFalse, databook} = props;      
     console.log('acaasito', databook) 
@@ -18,7 +16,7 @@ const ModalBook = (props) => {
                 key = {i}
                 id = {Array.idBook}
                 image = {Array.image}
-                title = {Array.titulo}
+                title = {Array.title}
                 published = {Array.published}
                 />) 
                 })}
