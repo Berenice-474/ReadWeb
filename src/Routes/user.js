@@ -70,8 +70,26 @@ if(User === null) {
 })
 });
 /////////AUTENTICACIÓN
-function verifyToken(req, res, next) {
+const verifyToken = (req, res, next) => {
+  
+  const token = req.headers['auth-token'];
+  if (!token) {
+    return res.status(401).send({ auth: false, message: 'El token no se encuentra.' });
+  } else {
+
+    jwt.verify(token, accessTokenSecret, (err, decoded) => {
+      if (err) {
+        return res.status(401).send({ auth: false, message: 'Falla en la autenticación del token.' });
+      } else {
+        req.idUser = decoded.payload.id;
+        next();
+      }
+    });
+  }
+};
+/* function verifyToken(req, res, next) {
     var token  = req.headers['auth-token'];    
+    console.log('acatokenverify', token)
     if (!token)
     return res.status(401).send({ auth: false, message: 'El token no se encuentra.' });    
     jwt.verify(token, accessTokenSecret, function(err, decoded) {   
@@ -80,7 +98,7 @@ function verifyToken(req, res, next) {
     req.idUser = decoded.payload.id;    
     next();    
   });
-}
+} */
 //////////LOGOUT
 router.post('/logout', (req, res)=> {
     console.log(req.body)
@@ -95,8 +113,7 @@ router.post('/logout', (req, res)=> {
 /////////BAUL
  router.post('/baul',  verifyToken, (req, res) => {      
       const id = req.idUser      
-      console.log(req.body)
-      if(!req.idUser ){
+            if(!req.idUser ){
       return res.status(403).send({ auth: false, message: 'No se encuentra el usuario' });
       } else {
       models.book.findOne({ where : {
@@ -112,17 +129,16 @@ router.post('/logout', (req, res)=> {
             autor: req.body.autor,
             published: req.body.published             
           }) .then((book)=>{ res.status(200).send({message: 'Libro agregado correctamente'})})
-             .catch((err)=> {             
-              res.status(500).send({message: 'Ha ocurrido algun error'})}) 
+              .catch((err)=> {             
+              res.status(500).send({message: 'Ha ocurrido algun error'})})  
           }else {
           res.status(404).send({message: 'El libro ya ha sido agregado al baul'})
           }})}}) 
-
-
-
+///////////////////
+ 
 //////Mostrar libros
 router.get('/books',  verifyToken ,(req,res) => {         
-    models.book.findOne({ where : {
+    models.book.findAll({ where : {
     idUser : req.idUser}})
    .then(userBook => {     
      console.log('userbook',userBook)
@@ -134,20 +150,50 @@ router.get('/books',  verifyToken ,(req,res) => {
     })
 /////////
 
- router.post('/match',  (req,res) => {
-  var matches = [];
-  console.log('entra a match', req.body)
-  models.book.findAll({ where: {
-     title: req.body.title
-  }}).then((match) => {
-    {matches =  match}
-  console.log('acamatch',{match})
-  res.status(200).send({match})
-  /* .catch((err)=> {res.status(405).send({message:'errrrrrrorrrr'})}) */
-  })
+router.get('/match', verifyToken, async (req, res) => {
+
+  console.log('entroamatch')
+  try {
+    const allBooks = await models.book.findAll({
+      where: {
+        idUser: req.idUser,
+      },
+    });
+    console.log('allBooks', allBooks)
+    const allMatches = await models.book.findAll({
+      where: {
+        idBook: { $in: allBooks.map(book => book.id) },
+        idUser: { $not: req.idUser },
+      },
+    });
+    console.log('allMatches', allMatches)
+    const matchesCounter = allMatches.map(match => match.idUser).reduce((counter, match) => {
+      if (!counter[match]) {
+        counter[match] = 1;
+      } else {
+        counter[match] += 1;
+      }
+      return counter;
+    }, {});
+   /*  console.log('matchesCounter', matchesCounter) */
+    const orderedUsers = Object.keys(matchesCounter).sort((u1, u2) => {
+      if (matchesCounter[u1] > matchesCounter[u2]) {
+        return -1;
+      }
+      return 1;
+    });
+    /* console.log('orderedUsers', orderedUsers) */
+    const results = orderedUsers.map(user => ({
+      [user]: matchesCounter[user],
+    }));
+    console.log('result', results)
+    res.status(200).send(results);
+  } catch (err) {
+    res.status(500).send({ message: "No pudimos encontrarte match :( Reintenta más tarde!" });
+  }
+});
 
 
 
-})
- 
+
 module.exports = router;

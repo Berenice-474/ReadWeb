@@ -1,15 +1,33 @@
 .conteinera{
     display: flex;
-    flex-direction: column;
+    width: 1500px;
+    height: 1000px;
+    flex-direction: row;
+    align-items: center;
     justify-content: center;
     align-items: center;
     background-color:#000000;
     backdrop-filter: blur(7px); 
     border-radius: 40px;
-    width: 900px;
+    flex-wrap: wrap;
+    
+}
+
+.conteinerb{
+    width: 250px;
+    background-color: lawngreen;
+    flex-basis: auto;   
+
+
+}
+
+.titulocard{
+    background-color: lightcoral;
+    width: 250px;
 }
 
 .textoCarda{
+    width: 250px;
     justify-content: center;
     font-family: 'BebasKai';
     font-size: 20px;

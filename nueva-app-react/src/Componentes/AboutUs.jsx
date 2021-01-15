@@ -25,7 +25,7 @@ const AboutUs = (props) => {
         })
              .then((response) => {
                  console.log('acaa', response)  
-                 setdatabook([response.data])})
+                 setdatabook(response.data)})
              .catch((error) => { 
               toast.configure();         
               toast.dark("No se ha encontrado el usuario", {              
@@ -37,8 +37,7 @@ const AboutUs = (props) => {
                 draggable: false,
                 progress: undefined,
               });  
-                   })}             
-               
+                   })}                          
 
                 
     return(
