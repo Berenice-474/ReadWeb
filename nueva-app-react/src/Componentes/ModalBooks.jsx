@@ -7,7 +7,7 @@ const ModalBook = (props) => {
     const { modalEditViewFalse, databook} = props;      
     console.log('acaasito', databook) 
     return (               
-        <div className='conteinera'> 
+        <div className='conteinerrr'> 
         <button 
         className= 'botonsi'
         onClick={modalEditViewFalse}>cerrar</button>        

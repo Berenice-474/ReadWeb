@@ -23,12 +23,6 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-/*    books: {
-    type: DataTypes.STRING,    
-    allowNull: true,
-    primaryKey: true,
-
-  },  */
       level: {
       type: DataTypes.ENUM,
       values: ['Guest', 'User', 'Admin'],

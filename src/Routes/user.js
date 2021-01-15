@@ -3,13 +3,12 @@ const {Router} = require('express');
 const { model } = require('../Config/database');
 const router = new Router();
 const models = require('../models');
-const app = require('../index.js');
 const user = require('../models/user');
 const baul = require('../models/baul');
 const book = require('../models/Book');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const bodyParser = require('body-parser');
+const { Op } = require('sequelize');
 
 const accessTokenSecret = 'youraccesstokensecret';  
 
@@ -69,36 +68,26 @@ if(User === null) {
 }
 })
 });
+
+
 /////////AUTENTICACIÓN
 const verifyToken = (req, res, next) => {
   
   const token = req.headers['auth-token'];
   if (!token) {
-    return res.status(401).send({ auth: false, message: 'El token no se encuentra.' });
-  } else {
-
-    jwt.verify(token, accessTokenSecret, (err, decoded) => {
+      return res.status(401).send({ auth: false, message: 'El token no se encuentra.' });
+      } else {   
+      jwt.verify(token, accessTokenSecret, (err, decoded) => {
       if (err) {
-        return res.status(401).send({ auth: false, message: 'Falla en la autenticación del token.' });
+      return res.status(401).send({ auth: false, message: 'Falla en la autenticación del token.' });
       } else {
-        req.idUser = decoded.payload.id;
-        next();
+      req.idUser = decoded.payload.id;
+      next();
       }
     });
   }
 };
-/* function verifyToken(req, res, next) {
-    var token  = req.headers['auth-token'];    
-    console.log('acatokenverify', token)
-    if (!token)
-    return res.status(401).send({ auth: false, message: 'El token no se encuentra.' });    
-    jwt.verify(token, accessTokenSecret, function(err, decoded) {   
-    if (err)
-    return res.status(500).send({ auth: false, message: 'Falla en la autenticación del token.' });     
-    req.idUser = decoded.payload.id;    
-    next();    
-  });
-} */
+
 //////////LOGOUT
 router.post('/logout', (req, res)=> {
     console.log(req.body)
@@ -162,8 +151,8 @@ router.get('/match', verifyToken, async (req, res) => {
     console.log('allBooks', allBooks)
     const allMatches = await models.book.findAll({
       where: {
-        idBook: { $in: allBooks.map(book => book.id) },
-        idUser: { $not: req.idUser },
+        idBook: {[Op.in] : allBooks.map(book => book.idBook)} ,
+        idUser: {[Op.not]: req.idUser },
       },
     });
     console.log('allMatches', allMatches)
@@ -176,19 +165,21 @@ router.get('/match', verifyToken, async (req, res) => {
       return counter;
     }, {});
    /*  console.log('matchesCounter', matchesCounter) */
-    const orderedUsers = Object.keys(matchesCounter).sort((u1, u2) => {
+      const orderedUsers = Object.keys(matchesCounter).sort((u1, u2) => {
       if (matchesCounter[u1] > matchesCounter[u2]) {
         return -1;
       }
       return 1;
     });
     /* console.log('orderedUsers', orderedUsers) */
-    const results = orderedUsers.map(user => ({
-      [user]: matchesCounter[user],
+      const results = orderedUsers.map(user => ({
+      user: [user],
+      count: matchesCounter[user],
     }));
     console.log('result', results)
     res.status(200).send(results);
   } catch (err) {
+    console.log('errordelcatch', err)
     res.status(500).send({ message: "No pudimos encontrarte match :( Reintenta más tarde!" });
   }
 });

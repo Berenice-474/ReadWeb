@@ -13,7 +13,7 @@ const Prueba= (props) => {
         <div className= 'conteinerb' >          
             <img  className= 'imageCard' src= {props.image} alt="" />
             </div>
-            <div className="div desc">
+            <div className="divdesc">
             <h2 className = 'tituloCard'> Titulo: {props.title}</h2>           
             <p className = "textoCard"> Año de publicación : {props.published}</p>                      
             </div>        

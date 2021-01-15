@@ -25,33 +25,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
-
-
-
  // settings
 app.set('port', process.env.PORT || 3000); //en caso de que nos den algún puerto 
-
-
 ///Routes
-
 app.use('/user', require('./Routes/user'))
 app.use('/register' , require('./Routes/register'))
-
-
-
 // Starting the server
 app.listen(app.get('port'), () => {
     console.log(`Server on port  ${app.get('port')}`)
 })
-
-
-
-  //Database
-
-  const db = require('./Config/database.js')
-
-  /// test DB -----> aca puedo verificar si mi base de datos esta conectada 
-
+//Database
+const db = require('./Config/database.js')
+/// test DB -----> aca puedo verificar si mi base de datos esta conectada 
 /* 
    db.authenticate()
     .then(() => console.log('Database conected...'))

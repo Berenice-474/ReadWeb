@@ -21,7 +21,7 @@ const Home = (props) => {
             console.log(response)
             window.localStorage.clear('token')
             toast.configure();         
-            toast.dark("Usuario desloggeado", {              
+            toast.dark("Usuario desloggeado!", {              
               position: "top-center",
               autoClose: 1500,
               hideProgressBar: false,
